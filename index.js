@@ -19,33 +19,11 @@ bot.on('message', (msg) => {
     switch (command) {
         case '/start':
             bot.sendMessage(chatId, `Welcome ${msg.chat.first_name}`);
-
-
-
-
-
+            console.log(msg);
             break;
-        case '/getlocation':
 
-
-            async function getLocation() {
-
-
-                try {
-                    const response = await axios.get('https://ipinfo.io/json');
-                    const { city, region, country, loc } = response.data;
-                    const [latitude, longitude] = loc.split(',');
-
-                    bot.sendMessage(chatId, `Your Name : ${msg.chat.first_name} \nYour UserName : ${msg.chat.username}  \nYour region :${region} \nYour country : ${country}  \nYour latitude : ${latitude} \nYour longitude : ${longitude}`);
-
-
-                } catch (error) {
-                    console.error('Error fetching location:', error.message);
-                }
-            }
-            getLocation()
-
-            // bot.sendMessage(chatId, `Your Name : ${msg.chat.first_name} \nYour UserName : ${msg.chat.username}`);
+        case '/you':
+            bot.sendMessage(chatId, `Your Name : ${msg.chat.first_name} \nYour Username : ${msg.chat.username} \nYour Chat id : ${msg.chat.id} \nLocation : I'm working on it, sorry for the inconvenience`);
             break;
         case '/about':
             bot.sendMessage(chatId, ` I am backend developer. \nI am passionate about creating innovative and user-friendly products that meet the needs of businesses and individuals.`);
